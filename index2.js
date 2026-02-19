@@ -9,5 +9,6 @@ app.listen(8080,()=>
 app.get("/",(req,res)=>{
     //res.send(req.url)
     res.send("respones from server")
+    console.log(req.headers.authorization)
 }
 )
