@@ -20,10 +20,10 @@ app.get("/id/:id/email/:email",(req,res)=>{
     console.log(req.headers.authorization)
 }
 )*/
-app.get("/a/b/c",(req,res)=>{
+app.get("/a/b/c",(a,b)=>{
     //res.send(req.url)
-    const sum=parseInt(req.params.a)+parseInt(req.params.b)+parseInt(req.params.c)
-    res.send("hello students")
+    //const sum=parseInt(req.params.a)+parseInt(req.params.b)+parseInt(req.params.c)
+    b.send(a.params)
     //console.log(req.headers.authorization)
 }
 )
