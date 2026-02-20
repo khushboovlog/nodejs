@@ -8,7 +8,7 @@ const logger = (req, res, next) => {
     const newuse=req.body;
     console.log(newuse);
 
-    if(newuse.token === "/1234") {
+    if(Number(newuse.token) === 1234) {
         next();
         
     }
@@ -21,12 +21,9 @@ app.use(logger);
 /*app.get("/1234", (req, res) => {
     res.send("Welcome to the protected route!");  
 }); */ 
-app.post("/1234",(req,res)=>{
-    const newUser=req.body;
-    user.push(newUser);
-    res.json(user);
-}
-);
+app.post("/1234", logger, (req, res) => {
+    res.send("Welcome to the protected route!");
+});
 // app.use(logger);
 
 
