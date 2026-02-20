@@ -1,29 +1,30 @@
-
 import express from "express";
 const app = express();
+const token = Math.round(Math.random() * 100000 ).toString()
 app.use(express.json());
-app.listen(8080);
 
-const logger = (req, res, next) => {
-    const newuse=req.body;
-    console.log(newuse);
+const auth = (req, res, next) => {
+    const val = req.headers.authorization
+    const tokenValue = val.split(" ")
+    if(tokenValue[1] === token) next()
+    else res.send("unauthrized")
+};
 
-    if(Number(newuse.token) === 1234) {
-        next();
-        
+app.get("/", auth,(req, res) => {
+    res.send("Welcome");
+});
+
+app.post("/login", (req, res) => {
+    if(req.body.email === "john@gmail.com" && Number(req.body.password) === 1234){
+        res.send(token)
     }
     else{
-        res.send("Invalid URL");
+        res.send("invalid credentials")
     }
     
-};
-app.use(logger);
-/*app.get("/1234", (req, res) => {
-    res.send("Welcome to the protected route!");  
-}); */ 
-app.post("/1234", logger, (req, res) => {
-    res.send("Welcome to the protected route!");
+})
+
+
+app.listen(8080, () => {
+  console.log("server is live");
 });
-// app.use(logger);
-
-
