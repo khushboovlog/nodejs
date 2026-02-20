@@ -27,3 +27,7 @@ app.get("/a/b/c",(a,b)=>{
     //console.log(req.headers.authorization)
 }
 )
+//or u can use query params
+app.get("/",(a,b)=>{
+    console.log(a.query)
+})
