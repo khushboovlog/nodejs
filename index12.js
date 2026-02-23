@@ -1,20 +1,14 @@
 
 import express from 'express';
+import userRouter from './routes/userRouter.js';
+import productRouter from './routes/productRouter.js';
 const app = express();
 app.listen(8080,()=>
 {
     console.log("server is starting");
 });
-const userRouter=express.Router();
-const productRouter=express.Router();
-userRouter.get("/",(req,res)=>
-{
-    res.json({message: "welcome to home page"});
-});
-productRouter.get("/",(req,res)=>
-{
-    res.json({message: "welcome to product page"});
-});
+//const userRouter=express.Router();
+//const productRouter=express.Router();
 app.use("/api/users", userRouter);
 app.use("/api/products", productRouter);
 app.use(express.json());
