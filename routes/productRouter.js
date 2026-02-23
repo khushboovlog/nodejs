@@ -1,7 +1,5 @@
 import express from 'express';
+import { getProduct } from '../controllers/productController.js';
 const productRouter=express.Router();
-productRouter.get("/",(req,res)=>
-{
-    res.json({message: "welcome to product page"});
-});
+productRouter.get("/",getProduct);
 export default productRouter;
